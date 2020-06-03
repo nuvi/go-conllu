@@ -9,17 +9,17 @@ import (
 // Parse parses conllu via the io.Reader interface and returns all of the tokens found
 // Parse doesn't close the reader when finished, that must be done manually
 func Parse(r io.Reader) ([]Sentence, error) {
-	line := ""
-	lineNumber := 0
-	var err error
 	sentences := []Sentence{}
 	currentSentence := Sentence{
 		Tokens: []Token{},
 	}
 	reader := bufio.NewReader(r)
-	for err == nil {
-		lineNumber++
-		line, err = reader.ReadString('\n')
+	done := false
+	for !done {
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			done = true
+		}
 		token, isComment, isSep, err := parseLine(line)
 		if err != nil {
 			return nil, err

@@ -6,7 +6,8 @@ import (
 	"strings"
 )
 
-func parseLine(line string) (t Token, isComment, isSep bool, err error) {
+// return (t Token, isComment, isSep bool, err error)
+func parseLine(line string) (Token, bool, bool, error) {
 	line = strings.TrimSpace(line)
 	if len(line) == 0 {
 		return Token{}, false, true, nil
@@ -21,6 +22,7 @@ func parseLine(line string) (t Token, isComment, isSep bool, err error) {
 		return Token{}, false, false, fmt.Errorf("line %v has incorrect number of entries. expected 10 found %v", entries, len(entries))
 	}
 
+	t := Token{}
 	id, err := strconv.ParseUint(entries[0], 10, 64)
 	if err != nil {
 		return Token{}, false, false, fmt.Errorf("ID can't be parsed. id: %v, err: %v", entries[0], err)
