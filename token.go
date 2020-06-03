@@ -1,5 +1,10 @@
 package conllu
 
+// Sentence represents a sentence of parsed CoNLL-U tokens
+type Sentence struct {
+	Tokens []Token
+}
+
 // Token represents a single token, e.g. "hello", "goodby"
 // and holds all associated annotations
 // https://universaldependencies.org/format.html#conll-u-format
@@ -12,12 +17,12 @@ type Token struct {
 
 	UPOS string // Universal part-of-speech tag
 
-	XPOS *string // Language-specific part-of-speech tag; nil if not available
+	XPOS string // Language-specific part-of-speech tag; empty if not available
 
 	// List of morphological features, which are described on the type; nil if not available
 	Feats []MorphologicalFeature
 
-	// Head of the current word, which is either the id of the head token for this word, or nil if none
+	// Head of the current word, which is either the id of the head token for this word, or 0 if none
 	// https://universaldependencies.org/format.html#syntactic-annotation
 	Head uint
 
