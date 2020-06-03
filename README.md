@@ -1,6 +1,8 @@
 # go-conllu
 CoNLL-U parser written in Go. Convert CoNLL-U files to in-memory structs
 
+[![](https://godoc.org/github.com/nuvi/go-conllu?status.svg)](https://godoc.org/github.com/nuvi/go-conllu)
+
 The Computational Natural Language Learning - U format (CoNLL-U) is used by the [Universal Dependencies](https://universaldependencies.org/format.html) project to represent natural language annotations.
 `go-conllu` parses CoNNL-U file formats and exposes the data via in-memory Go structs.
 
