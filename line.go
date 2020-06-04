@@ -7,49 +7,44 @@ import (
 )
 
 // return (t Token, isComment, isSep bool, err error)
-func parseLine(line string) (Token, bool, bool, error) {
+func parseLine(line string) ([]Token, bool, bool, error) {
 	line = strings.TrimSpace(line)
 	if len(line) == 0 {
-		return Token{}, false, true, nil
+		return []Token{}, false, true, nil
 	}
 
 	if string(line[0]) == "#" {
-		return Token{}, true, false, nil
+		return []Token{}, true, false, nil
 	}
 
 	entries := strings.Split(line, "\t")
 	if len(entries) != 10 {
-		return Token{}, false, false, fmt.Errorf("line %v has incorrect number of entries. expected 10 found %v", entries, len(entries))
+		return []Token{}, false, false, fmt.Errorf("line %v has incorrect number of entries. expected 10 found %v", entries, len(entries))
 	}
 
 	t := Token{}
-	id, err := strconv.ParseUint(entries[0], 10, 64)
-	if err != nil {
-		return Token{}, false, false, fmt.Errorf("ID can't be parsed. id: %v, err: %v", entries[0], err)
-	}
-	t.ID = uint(id)
 
 	form := entries[1]
 	if form == "" {
-		return Token{}, false, false, fmt.Errorf("FORM can't be parsed. form: %v, err: %v", form, err)
+		return []Token{}, false, false, fmt.Errorf("FORM can't be parsed. form: %v", form)
 	}
 	t.Form = form
 
 	lemma := entries[2]
 	if lemma == "" {
-		return Token{}, false, false, fmt.Errorf("LEMMA can't be parsed. lemma: %v, err: %v", lemma, err)
+		return []Token{}, false, false, fmt.Errorf("LEMMA can't be parsed. lemma: %v", lemma)
 	}
 	t.Lemma = lemma
 
 	upos := entries[3]
 	if upos == "" {
-		return Token{}, false, false, fmt.Errorf("UPOS can't be parsed. upos: %v, err: %v", upos, err)
+		return []Token{}, false, false, fmt.Errorf("UPOS can't be parsed. upos: %v", upos)
 	}
 	t.UPOS = upos
 
 	xpos := entries[4]
 	if xpos == "" {
-		return Token{}, false, false, fmt.Errorf("UPOS can't be parsed. xpos: %v, err: %v", xpos, err)
+		return []Token{}, false, false, fmt.Errorf("UPOS can't be parsed. xpos: %v", xpos)
 	}
 	if xpos != "_" {
 		t.XPOS = xpos
@@ -58,39 +53,56 @@ func parseLine(line string) (Token, bool, bool, error) {
 	feats := entries[5]
 	finalFeats, err := parseFeats(feats)
 	if err != nil {
-		return Token{}, false, false, err
+		return []Token{}, false, false, err
 	}
 	t.Feats = finalFeats
 
-	head, err := strconv.ParseUint(entries[6], 10, 64)
-	if err != nil {
-		return Token{}, false, false, fmt.Errorf("HEAD can't be parsed. id: %v, err: %v", entries[6], err)
+	if entries[6] == "_" {
+		t.Head = 0
+	} else {
+		head, err := strconv.ParseFloat(entries[6], 64)
+		if err != nil {
+			return []Token{}, false, false, fmt.Errorf("HEAD can't be parsed. id: %v, err: %v", entries[6], err)
+		}
+		t.Head = head
 	}
-	t.Head = uint(head)
 
 	deprel := entries[7]
-	if deprel == "" {
-		return Token{}, false, false, fmt.Errorf("DEPREL can't be parsed. deprel: %v, err: %v", deprel, err)
+	if deprel == "_" {
+		deprel = "root"
 	}
 	if t.Head == 0 && deprel != "root" {
-		return Token{}, false, false, fmt.Errorf("DEPREL must match head. deprel: %v, head: %v", deprel, t.Head)
+		return []Token{}, false, false, fmt.Errorf("DEPREL must match head. deprel: %v, head: %v", deprel, t.Head)
 	}
 	t.Deprel = deprel
 
 	deps := entries[8]
 	finalDeps, err := parseDeps(deps)
 	if err != nil {
-		return Token{}, false, false, err
+		return []Token{}, false, false, err
 	}
 	t.Deps = finalDeps
 
 	misc := entries[9]
 	finalMisc, err := parseMisc(misc)
 	if err != nil {
-		return Token{}, false, false, err
+		return []Token{}, false, false, err
 	}
 	t.Misc = finalMisc
-	return t, false, false, nil
+
+	tokens := []Token{}
+	idStrings := strings.Split(entries[0], "-")
+	for _, idString := range idStrings {
+		new := t
+		id, err := strconv.ParseFloat(idString, 64)
+		if err != nil {
+			return []Token{}, false, false, fmt.Errorf("ID can't be parsed. id: %v, err: %v", entries[0], err)
+		}
+		new.ID = id
+		tokens = append(tokens, new)
+	}
+
+	return tokens, false, false, nil
 }
 
 func parseFeats(feats string) ([]MorphologicalFeature, error) {
@@ -120,15 +132,15 @@ func parseDeps(deps string) ([]Dep, error) {
 	finalDeps := []Dep{}
 	for _, sep := range separated {
 		pieces := strings.Split(sep, ":")
-		if len(pieces) != 2 {
+		if len(pieces) < 2 {
 			return nil, fmt.Errorf("Invalid DEP length. text: %v, len: %v", sep, len(pieces))
 		}
-		head, err := strconv.ParseUint(pieces[0], 10, 64)
+		head, err := strconv.ParseFloat(pieces[0], 64)
 		if err != nil {
 			return nil, fmt.Errorf("DEPS HEAD can't be parsed. id: %v, err: %v", pieces[0], err)
 		}
 		finalDeps = append(finalDeps, Dep{
-			Head:   uint(head),
+			Head:   head,
 			Deprel: pieces[1],
 		})
 	}

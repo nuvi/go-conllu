@@ -9,7 +9,7 @@ type Sentence struct {
 // and holds all associated annotations
 // https://universaldependencies.org/format.html#conll-u-format
 type Token struct {
-	ID uint // Word index, integer starting at 1 for each new sentence; may be a range for multiword tokens; may be a decimal number for empty nodes (decimal numbers can be lower than 1 but must be greater than 0)
+	ID float64 // Word index, integer starting at 1 for each new sentence; may be a range for multiword tokens; may be a decimal number for empty nodes (decimal numbers can be lower than 1 but must be greater than 0)
 
 	Form string // Word form or punctuation symbol
 
@@ -24,7 +24,7 @@ type Token struct {
 
 	// Head of the current word, which is either the id of the head token for this word, or 0 if none
 	// https://universaldependencies.org/format.html#syntactic-annotation
-	Head uint
+	Head float64
 
 	// Universal dependency relation to the HEAD (root iff HEAD = 0) or a defined language-specific subtype of one
 	Deprel string
@@ -47,6 +47,6 @@ type MorphologicalFeature struct {
 
 // Dep is a representation of a single part of the enhanced dependency graph
 type Dep struct {
-	Head   uint
+	Head   float64
 	Deprel string
 }

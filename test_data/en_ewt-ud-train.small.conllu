@@ -1,43 +1,112 @@
-# COPIED FROM https://raw.githubusercontent.com/UniversalDependencies/UD_English-GUM/master/en_gum-ud-train.conllu
-# newdoc id = GUM_academic_art
-# sent_id = GUM_academic_art-1
-# text = Aesthetic Appreciation and Spanish Art:
-# s_type=frag
-1	Aesthetic	aesthetic	ADJ	JJ	Degree=Pos	2	amod	_	Entity=(abstract-1
-2	Appreciation	appreciation	NOUN	NN	Number=Sing	0	root	_	Entity=abstract-1)
-3	and	and	CCONJ	CC	_	5	cc	_	_
-4	Spanish	Spanish	ADJ	JJ	Degree=Pos	5	amod	_	Entity=(abstract-2
-5	Art	art	NOUN	NN	Number=Sing	2	conj	_	Entity=abstract-2)|SpaceAfter=No
-6	:	:	PUNCT	:	_	2	punct	_	_
+# COPIED FROM https://raw.githubusercontent.com/UniversalDependencies/UD_English-EWT/master/en_ewt-ud-train.conllu
+# newdoc id = weblog-juancole.com_juancole_20051126063000_ENG_20051126_063000
+# sent_id = weblog-juancole.com_juancole_20051126063000_ENG_20051126_063000-0001
+# newpar id = weblog-juancole.com_juancole_20051126063000_ENG_20051126_063000-p0001
+# text = Al-Zaman : American forces killed Shaikh Abdullah al-Ani, the preacher at the mosque in the town of Qaim, near the Syrian border.
+1	Al	Al	PROPN	NNP	Number=Sing	0	root	0:root	SpaceAfter=No
+2	-	-	PUNCT	HYPH	_	1	punct	1:punct	SpaceAfter=No
+3	Zaman	Zaman	PROPN	NNP	Number=Sing	1	flat	1:flat	_
+4	:	:	PUNCT	:	_	1	punct	1:punct	_
+5	American	american	ADJ	JJ	Degree=Pos	6	amod	6:amod	_
+6	forces	force	NOUN	NNS	Number=Plur	7	nsubj	7:nsubj	_
+7	killed	kill	VERB	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	1	parataxis	1:parataxis	_
+8	Shaikh	Shaikh	PROPN	NNP	Number=Sing	7	obj	7:obj	_
+9	Abdullah	Abdullah	PROPN	NNP	Number=Sing	8	flat	8:flat	_
+10	al	al	PROPN	NNP	Number=Sing	8	flat	8:flat	SpaceAfter=No
+11	-	-	PUNCT	HYPH	_	8	punct	8:punct	SpaceAfter=No
+12	Ani	Ani	PROPN	NNP	Number=Sing	8	flat	8:flat	SpaceAfter=No
+13	,	,	PUNCT	,	_	8	punct	8:punct	_
+14	the	the	DET	DT	Definite=Def|PronType=Art	15	det	15:det	_
+15	preacher	preacher	NOUN	NN	Number=Sing	8	appos	8:appos	_
+16	at	at	ADP	IN	_	18	case	18:case	_
+17	the	the	DET	DT	Definite=Def|PronType=Art	18	det	18:det	_
+18	mosque	mosque	NOUN	NN	Number=Sing	7	obl	7:obl:at	_
+19	in	in	ADP	IN	_	21	case	21:case	_
+20	the	the	DET	DT	Definite=Def|PronType=Art	21	det	21:det	_
+21	town	town	NOUN	NN	Number=Sing	18	nmod	18:nmod:in	_
+22	of	of	ADP	IN	_	23	case	23:case	_
+23	Qaim	Qaim	PROPN	NNP	Number=Sing	21	nmod	21:nmod:of	SpaceAfter=No
+24	,	,	PUNCT	,	_	21	punct	21:punct	_
+25	near	near	ADP	IN	_	28	case	28:case	_
+26	the	the	DET	DT	Definite=Def|PronType=Art	28	det	28:det	_
+27	Syrian	syrian	ADJ	JJ	Degree=Pos	28	amod	28:amod	_
+28	border	border	NOUN	NN	Number=Sing	21	nmod	21:nmod:near	SpaceAfter=No
+29	.	.	PUNCT	.	_	1	punct	1:punct	_
 
-# sent_id = GUM_academic_art-2
-# text = Insights from Eye-Tracking
-# s_type=frag
-1	Insights	insight	NOUN	NNS	Number=Plur	0	root	_	Entity=(abstract-3
-2	from	from	ADP	IN	_	3	case	_	_
-3	Eye-Tracking	eye-tracking	NOUN	NN	Number=Sing	1	nmod	_	Entity=(abstract-4)abstract-3)
+# sent_id = weblog-juancole.com_juancole_20051126063000_ENG_20051126_063000-0002
+# text = [This killing of a respected cleric will be causing us trouble for years to come.]
+1	[	[	PUNCT	-LRB-	_	10	punct	10:punct	SpaceAfter=No
+2	This	this	DET	DT	Number=Sing|PronType=Dem	3	det	3:det	_
+3	killing	killing	NOUN	NN	Number=Sing	10	nsubj	10:nsubj	_
+4	of	of	ADP	IN	_	7	case	7:case	_
+5	a	a	DET	DT	Definite=Ind|PronType=Art	7	det	7:det	_
+6	respected	respected	ADJ	JJ	Degree=Pos	7	amod	7:amod	_
+7	cleric	cleric	NOUN	NN	Number=Sing	3	nmod	3:nmod:of	_
+8	will	will	AUX	MD	VerbForm=Fin	10	aux	10:aux	_
+9	be	be	AUX	VB	VerbForm=Inf	10	aux	10:aux	_
+10	causing	cause	VERB	VBG	VerbForm=Ger	0	root	0:root	_
+11	us	we	PRON	PRP	Case=Acc|Number=Plur|Person=1|PronType=Prs	10	iobj	10:iobj	_
+12	trouble	trouble	NOUN	NN	Number=Sing	10	obj	10:obj	_
+13	for	for	ADP	IN	_	14	case	14:case	_
+14	years	year	NOUN	NNS	Number=Plur	10	obl	10:obl:for	_
+15	to	to	PART	TO	_	16	mark	16:mark	_
+16	come	come	VERB	VB	VerbForm=Inf	14	acl	14:acl:to	SpaceAfter=No
+17	.	.	PUNCT	.	_	10	punct	10:punct	SpaceAfter=No
+18	]	]	PUNCT	-RRB-	_	10	punct	10:punct	_
 
-# sent_id = GUM_academic_art-3
-# text = Claire Bailey-Ross claire.bailey-ross@port.ac.uk University of Portsmouth, United Kingdom
-# s_type=frag
-1	Claire	Claire	PROPN	NNP	Number=Sing	0	root	_	Entity=(person-5
-2	Bailey-Ross	Bailey-Ross	PROPN	NNP	Number=Sing	1	flat	_	Entity=person-5)
-3	claire.bailey-ross@port.ac.uk	claire.bailey-ross@port.ac.uk	PROPN	NNP	Number=Sing	1	list	_	Entity=(abstract-6)
-4	University	University	PROPN	NNP	Number=Sing	1	list	_	Entity=(organization-7
-5	of	of	ADP	IN	_	6	case	_	_
-6	Portsmouth	Portsmouth	PROPN	NNP	Number=Sing	4	nmod	_	Entity=(place-8|SpaceAfter=No
-7	,	,	PUNCT	,	_	9	punct	_	_
-8	United	United	PROPN	NNP	Number=Sing	9	amod	_	Entity=(place-9
-9	Kingdom	Kingdom	PROPN	NNP	Number=Sing	1	list	_	Entity=organization-7)place-8)place-9)
+# sent_id = weblog-juancole.com_juancole_20051126063000_ENG_20051126_063000-0003
+# text = DPA: Iraqi authorities announced that they had busted up 3 terrorist cells operating in Baghdad.
+1	DPA	DPA	PROPN	NNP	Number=Sing	0	root	0:root	SpaceAfter=No
+2	:	:	PUNCT	:	_	1	punct	1:punct	_
+3	Iraqi	iraqi	ADJ	JJ	Degree=Pos	4	amod	4:amod	_
+4	authorities	authority	NOUN	NNS	Number=Plur	5	nsubj	5:nsubj	_
+5	announced	announce	VERB	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	1	parataxis	1:parataxis	_
+6	that	that	SCONJ	IN	_	9	mark	9:mark	_
+7	they	they	PRON	PRP	Case=Nom|Number=Plur|Person=3|PronType=Prs	9	nsubj	9:nsubj	_
+8	had	have	AUX	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	9	aux	9:aux	_
+9	busted	bust	VERB	VBN	Tense=Past|VerbForm=Part	5	ccomp	5:ccomp	_
+10	up	up	ADP	RP	_	9	compound:prt	9:compound:prt	_
+11	3	3	NUM	CD	NumType=Card	13	nummod	13:nummod	_
+12	terrorist	terrorist	ADJ	JJ	Degree=Pos	13	amod	13:amod	_
+13	cells	cell	NOUN	NNS	Number=Plur	9	obj	9:obj	_
+14	operating	operate	VERB	VBG	VerbForm=Ger	13	acl	13:acl	_
+15	in	in	ADP	IN	_	16	case	16:case	_
+16	Baghdad	Baghdad	PROPN	NNP	Number=Sing	14	obl	14:obl:in	SpaceAfter=No
+17	.	.	PUNCT	.	_	1	punct	1:punct	_
 
-# sent_id = GUM_academic_art-4
-# text = Andrew Beresford a.m.beresford@durham.ac.uk Durham University, United Kingdom
-# s_type=frag
-1	Andrew	Andrew	PROPN	NNP	Number=Sing	0	root	_	Entity=(person-10
-2	Beresford	Beresford	PROPN	NNP	Number=Sing	1	flat	_	Entity=person-10)
-3	a.m.beresford@durham.ac.uk	a.m.beresford@durham.ac.uk	PROPN	NNP	Number=Sing	1	list	_	Entity=(abstract-11)
-4	Durham	Durham	PROPN	NNP	Number=Sing	5	compound	_	Entity=(organization-12(place-13)
-5	University	University	PROPN	NNP	Number=Sing	1	list	_	SpaceAfter=No
-6	,	,	PUNCT	,	_	8	punct	_	_
-7	United	United	PROPN	NNP	Number=Sing	8	amod	_	Entity=(place-9
-8	Kingdom	Kingdom	PROPN	NNP	Number=Sing	1	list	_	Entity=organization-12)place-9)
+# sent_id = weblog-juancole.com_juancole_20051126063000_ENG_20051126_063000-0004
+# text = Two of them were being run by 2 officials of the Ministry of the Interior!
+1	Two	two	NUM	CD	NumType=Card	6	nsubj:pass	6:nsubj:pass	_
+2	of	of	ADP	IN	_	3	case	3:case	_
+3	them	they	PRON	PRP	Case=Acc|Number=Plur|Person=3|PronType=Prs	1	nmod	1:nmod:of	_
+4	were	be	AUX	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	6	aux	6:aux	_
+5	being	be	AUX	VBG	VerbForm=Ger	6	aux:pass	6:aux:pass	_
+6	run	run	VERB	VBN	Tense=Past|VerbForm=Part|Voice=Pass	0	root	0:root	_
+7	by	by	ADP	IN	_	9	case	9:case	_
+8	2	2	NUM	CD	NumType=Card	9	nummod	9:nummod	_
+9	officials	official	NOUN	NNS	Number=Plur	6	obl	6:obl:by	_
+10	of	of	ADP	IN	_	12	case	12:case	_
+11	the	the	DET	DT	Definite=Def|PronType=Art	12	det	12:det	_
+12	Ministry	Ministry	PROPN	NNP	Number=Sing	9	nmod	9:nmod:of	_
+13	of	of	ADP	IN	_	15	case	15:case	_
+14	the	the	DET	DT	Definite=Def|PronType=Art	15	det	15:det	_
+15	Interior	Interior	PROPN	NNP	Number=Sing	12	nmod	12:nmod:of	SpaceAfter=No
+16	!	!	PUNCT	.	_	6	punct	6:punct	_
+
+# added by lane, test range
+# text = Two of them were being run by 2 officials of the Ministry of the Interior!
+1-2	Two	two	NUM	CD	NumType=Card	6	nsubj:pass	6:nsubj:pass	_
+3	them	they	PRON	PRP	Case=Acc|Number=Plur|Person=3|PronType=Prs	1	nmod	1:nmod:of	_
+4	were	be	AUX	VBD	Mood=Ind|Tense=Past|VerbForm=Fin	6	aux	6:aux	_
+5	being	be	AUX	VBG	VerbForm=Ger	6	aux:pass	6:aux:pass	_
+6	run	run	VERB	VBN	Tense=Past|VerbForm=Part|Voice=Pass	0	root	0:root	_
+7	by	by	ADP	IN	_	9	case	9:case	_
+8	2	2	NUM	CD	NumType=Card	9	nummod	9:nummod	_
+9	officials	official	NOUN	NNS	Number=Plur	6	obl	6:obl:by	_
+10	of	of	ADP	IN	_	12	case	12:case	_
+11	the	the	DET	DT	Definite=Def|PronType=Art	12	det	12:det	_
+12	Ministry	Ministry	PROPN	NNP	Number=Sing	9	nmod	9:nmod:of	_
+13	of	of	ADP	IN	_	15	case	15:case	_
+14	the	the	DET	DT	Definite=Def|PronType=Art	15	det	15:det	_
+15	Interior	Interior	PROPN	NNP	Number=Sing	12	nmod	12:nmod:of	SpaceAfter=No
+16	!	!	PUNCT	.	_	6	punct	6:punct	_

@@ -2,6 +2,7 @@ package conllu
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"os"
 )
@@ -15,14 +16,16 @@ func Parse(r io.Reader) ([]Sentence, error) {
 	}
 	reader := bufio.NewReader(r)
 	done := false
+	lineNumber := 0
 	for !done {
+		lineNumber++
 		line, err := reader.ReadString('\n')
 		if err != nil {
 			done = true
 		}
 		token, isComment, isSep, err := parseLine(line)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("error on line %v, err: %v", lineNumber, err)
 		}
 		if isComment {
 			continue
@@ -37,7 +40,7 @@ func Parse(r io.Reader) ([]Sentence, error) {
 			}
 			continue
 		}
-		currentSentence.Tokens = append(currentSentence.Tokens, token)
+		currentSentence.Tokens = append(currentSentence.Tokens, token...)
 	}
 	return sentences, nil
 }
