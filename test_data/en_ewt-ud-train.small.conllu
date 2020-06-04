@@ -1,0 +1,43 @@
+# COPIED FROM https://raw.githubusercontent.com/UniversalDependencies/UD_English-GUM/master/en_gum-ud-train.conllu
+# newdoc id = GUM_academic_art
+# sent_id = GUM_academic_art-1
+# text = Aesthetic Appreciation and Spanish Art:
+# s_type=frag
+1	Aesthetic	aesthetic	ADJ	JJ	Degree=Pos	2	amod	_	Entity=(abstract-1
+2	Appreciation	appreciation	NOUN	NN	Number=Sing	0	root	_	Entity=abstract-1)
+3	and	and	CCONJ	CC	_	5	cc	_	_
+4	Spanish	Spanish	ADJ	JJ	Degree=Pos	5	amod	_	Entity=(abstract-2
+5	Art	art	NOUN	NN	Number=Sing	2	conj	_	Entity=abstract-2)|SpaceAfter=No
+6	:	:	PUNCT	:	_	2	punct	_	_
+
+# sent_id = GUM_academic_art-2
+# text = Insights from Eye-Tracking
+# s_type=frag
+1	Insights	insight	NOUN	NNS	Number=Plur	0	root	_	Entity=(abstract-3
+2	from	from	ADP	IN	_	3	case	_	_
+3	Eye-Tracking	eye-tracking	NOUN	NN	Number=Sing	1	nmod	_	Entity=(abstract-4)abstract-3)
+
+# sent_id = GUM_academic_art-3
+# text = Claire Bailey-Ross claire.bailey-ross@port.ac.uk University of Portsmouth, United Kingdom
+# s_type=frag
+1	Claire	Claire	PROPN	NNP	Number=Sing	0	root	_	Entity=(person-5
+2	Bailey-Ross	Bailey-Ross	PROPN	NNP	Number=Sing	1	flat	_	Entity=person-5)
+3	claire.bailey-ross@port.ac.uk	claire.bailey-ross@port.ac.uk	PROPN	NNP	Number=Sing	1	list	_	Entity=(abstract-6)
+4	University	University	PROPN	NNP	Number=Sing	1	list	_	Entity=(organization-7
+5	of	of	ADP	IN	_	6	case	_	_
+6	Portsmouth	Portsmouth	PROPN	NNP	Number=Sing	4	nmod	_	Entity=(place-8|SpaceAfter=No
+7	,	,	PUNCT	,	_	9	punct	_	_
+8	United	United	PROPN	NNP	Number=Sing	9	amod	_	Entity=(place-9
+9	Kingdom	Kingdom	PROPN	NNP	Number=Sing	1	list	_	Entity=organization-7)place-8)place-9)
+
+# sent_id = GUM_academic_art-4
+# text = Andrew Beresford a.m.beresford@durham.ac.uk Durham University, United Kingdom
+# s_type=frag
+1	Andrew	Andrew	PROPN	NNP	Number=Sing	0	root	_	Entity=(person-10
+2	Beresford	Beresford	PROPN	NNP	Number=Sing	1	flat	_	Entity=person-10)
+3	a.m.beresford@durham.ac.uk	a.m.beresford@durham.ac.uk	PROPN	NNP	Number=Sing	1	list	_	Entity=(abstract-11)
+4	Durham	Durham	PROPN	NNP	Number=Sing	5	compound	_	Entity=(organization-12(place-13)
+5	University	University	PROPN	NNP	Number=Sing	1	list	_	SpaceAfter=No
+6	,	,	PUNCT	,	_	8	punct	_	_
+7	United	United	PROPN	NNP	Number=Sing	8	amod	_	Entity=(place-9
+8	Kingdom	Kingdom	PROPN	NNP	Number=Sing	1	list	_	Entity=organization-12)place-9)
