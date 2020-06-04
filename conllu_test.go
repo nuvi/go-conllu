@@ -19,19 +19,19 @@ func TestParseFileSmall(t *testing.T) {
 		t.Errorf("Expecting len %v, got %v", expected, len(sentences))
 	}
 
-	expected = 6
+	expected = 29
 	if len(sentences[0].Tokens) != expected {
 		t.Errorf("Expecting len %v, got %v, data: %v", expected, len(sentences[0].Tokens), sentences[0].Tokens)
 	}
-	expected = 3
+	expected = 18
 	if len(sentences[1].Tokens) != expected {
 		t.Errorf("Expecting len %v, got %v, data: %v", expected, len(sentences[1].Tokens), sentences[1].Tokens)
 	}
-	expected = 9
+	expected = 17
 	if len(sentences[2].Tokens) != expected {
 		t.Errorf("Expecting len %v, got %v, data: %v", expected, len(sentences[2].Tokens), sentences[2].Tokens)
 	}
-	expected = 8
+	expected = 16
 	if len(sentences[3].Tokens) != expected {
 		t.Errorf("Expecting len %v, got %v, data: %v", expected, len(sentences[3].Tokens), sentences[3].Tokens)
 	}
