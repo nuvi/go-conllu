@@ -40,7 +40,7 @@ func Parse(r io.Reader) ([]Sentence, error) {
 			}
 			continue
 		}
-		currentSentence.Tokens = append(currentSentence.Tokens, token)
+		currentSentence.Tokens = append(currentSentence.Tokens, token...)
 	}
 	return sentences, nil
 }

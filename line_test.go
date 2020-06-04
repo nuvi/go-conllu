@@ -8,7 +8,7 @@ import (
 func TestParseLine(t *testing.T) {
 	type test struct {
 		input     string
-		expected  Token
+		expected  []Token
 		isComment bool
 		isSep     bool
 		shouldErr bool
@@ -17,27 +17,29 @@ func TestParseLine(t *testing.T) {
 	tests := []test{
 		{
 			input: "11	the	the	DET	DT	Definite=Def|PronType=Art	12	det	_	Entity=(abstract-91",
-			expected: Token{
-				ID:    11,
-				Form:  "the",
-				Lemma: "the",
-				UPOS:  "DET",
-				XPOS:  "DT",
-				Feats: []MorphologicalFeature{
-					{
-						Feature: "Definite",
-						Value:   "Def",
+			expected: []Token{
+				{
+					ID:    11,
+					Form:  "the",
+					Lemma: "the",
+					UPOS:  "DET",
+					XPOS:  "DT",
+					Feats: []MorphologicalFeature{
+						{
+							Feature: "Definite",
+							Value:   "Def",
+						},
+						{
+							Feature: "PronType",
+							Value:   "Art",
+						},
 					},
-					{
-						Feature: "PronType",
-						Value:   "Art",
+					Head:   12,
+					Deprel: "det",
+					Deps:   nil,
+					Misc: []string{
+						"Entity=(abstract-91",
 					},
-				},
-				Head:   12,
-				Deprel: "det",
-				Deps:   nil,
-				Misc: []string{
-					"Entity=(abstract-91",
 				},
 			},
 		},
@@ -48,7 +50,7 @@ func TestParseLine(t *testing.T) {
 		{
 			input:    "# a comment",
 			isSep:    false,
-			expected: Token{},
+			expected: []Token{},
 		},
 		{
 			input: "",
