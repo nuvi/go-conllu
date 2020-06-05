@@ -1,39 +1,49 @@
 package conllu
 
-// Sentence represents a sentence of parsed CoNLL-U tokens
+// Sentence represents a single sentence of parsed CoNLL-U tokens
 type Sentence struct {
 	Tokens []Token
 }
 
-// Token represents a single token, e.g. "hello", "goodby"
+// Token represents a single token, e.g. "hello", "bye"
 // and holds all associated annotations
 // https://universaldependencies.org/format.html#conll-u-format
 type Token struct {
-	ID float64 // Word index, integer starting at 1 for each new sentence; may be a range for multiword tokens; may be a decimal number for empty nodes (decimal numbers can be lower than 1 but must be greater than 0)
+	// Word index, float starting at 1 for each new sentence
+	// If a range was found on a single line in the file
+	// then nultiple tokens will be created
+	ID float64
 
-	Form string // Word form or punctuation symbol
+	// Word form or punctuation symbol
+	Form string
 
-	Lemma string // Lemma or stem of word form
+	// Lemma or stem of word form
+	Lemma string
 
-	UPOS string // Universal part-of-speech tag
+	// Universal part-of-speech tag
+	UPOS string
 
-	XPOS string // Language-specific part-of-speech tag; empty if not available
+	// Language-specific part-of-speech tag; empty if not available
+	XPOS string
 
-	// List of morphological features, which are described on the type; nil if not available
+	// List of morphological features, which are described on the type
+	// nil if not available
 	Feats []MorphologicalFeature
 
-	// Head of the current word, which is either the id of the head token for this word, or 0 if none
+	// Head of the current word
+	// Either the ID of the head token for this word, or 0 if root
 	// https://universaldependencies.org/format.html#syntactic-annotation
 	Head float64
 
-	// Universal dependency relation to the HEAD (root iff HEAD = 0) or a defined language-specific subtype of one
+	// Universal dependency relation to the HEAD (root iff HEAD = 0)
+	// or a defined language-specific subtype of one
 	Deprel string
 
 	// Enhanced dependency graph in the form of a list of head-deprel pairs. See Dep type for more information; nil if none.
 	// Dependencies that are shared between the basic and the enhanced dependency representations must be repeated in the Deps field
 	Deps []Dep
 
-	// Any other annotation, represented as a list separated by "|". Nil if none.
+	// Any other annotation, nil if none.
 	// https://universaldependencies.org/format.html#miscellaneous
 	Misc []string
 }
