@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-// Parse parses conllu via the io.Reader interface and returns all of the tokens found
+// Parse parses conllu data via the io.Reader interface and returns all of the tokens found
 // Parse doesn't close the reader when finished, that must be done manually
 func Parse(r io.Reader) ([]Sentence, error) {
 	sentences := []Sentence{}
