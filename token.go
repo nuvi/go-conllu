@@ -5,14 +5,49 @@ type Sentence struct {
 	Tokens []Token
 }
 
+func (s Sentence) String() string {
+	var sentence string
+	skip := map[float64]bool{}
+	for i, token := range s.Tokens {
+
+		// Avoid sub-tokens
+		if _, ok := skip[token.ID]; ok {
+			continue
+		}
+		if len(token.IDS) > 0 {
+			for _, id := range token.IDS {
+				skip[id] = true
+			}
+		}
+
+		hasSpace := true
+		for _, value := range token.Misc {
+			if value == "SpaceAfter=No" {
+				hasSpace = false
+			}
+		}
+		sentence += token.Form
+
+		// Append space, except for the last token
+		if hasSpace && i != len(s.Tokens) - 1 {
+			sentence += " "
+		}
+	}
+
+	return sentence
+}
+
 // Token represents a single token, e.g. "hello", "bye"
 // and holds all associated annotations
 // https://universaldependencies.org/format.html#conll-u-format
 type Token struct {
 	// Word index, float starting at 1 for each new sentence
 	// If a range was found on a single line in the file
-	// then nultiple tokens will be created
+	// then multiple tokens will be created
 	ID float64
+
+	// ID range for contractions and other multi-token words
+	IDS []float64
 
 	// Word form or punctuation symbol
 	Form string

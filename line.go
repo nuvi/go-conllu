@@ -92,15 +92,20 @@ func parseLine(line string) ([]Token, bool, bool, error) {
 
 	tokens := []Token{}
 	idStrings := strings.Split(entries[0], "-")
+
 	for _, idString := range idStrings {
-		new := t
 		id, err := strconv.ParseFloat(idString, 64)
 		if err != nil {
 			return []Token{}, false, false, fmt.Errorf("ID can't be parsed. id: %v, err: %v", entries[0], err)
 		}
-		new.ID = id
-		tokens = append(tokens, new)
+		if len(idStrings) > 1 {
+			t.IDS = append(t.IDS, id)
+		} else {
+			t.ID = id
+		}
 	}
+
+	tokens = append(tokens, t)
 
 	return tokens, false, false, nil
 }
